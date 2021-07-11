@@ -1,0 +1,31 @@
+.button_file {
+  display: inline-flex;
+  height: 50px;
+  padding: 0;
+  background: #2596be;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.button_file:hover {
+  background: #2187ab;
+}
+.button_file:active {
+  background: #1a6985;
+}
+.button_file_text,
+.button_file_icon {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 24px;
+  color: #fff;
+  height: 100%;
+}
+.button_file_icon {
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.08);
+}
