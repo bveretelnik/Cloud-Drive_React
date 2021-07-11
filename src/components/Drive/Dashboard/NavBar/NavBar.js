@@ -1,15 +1,32 @@
 import React from "react";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../../../../contexts/AuthContext";
 
 function NavBar() {
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
   const toggleClass = () => {
     document.querySelector(".navbar_links").classList.toggle("active");
   };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      history.push("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <nav className="navbar">
-      <div className="brand_title">Cloud Drive</div>
-      <a href="#" className="toggle_button" onClick={toggleClass}>
+      <div className="brand_title">
+        <Link style={{ textDecoration: "none", color: "black" }} to="/">
+          Cloud Drive
+        </Link>
+      </div>
+
+      <a href="#/" className="toggle_button" onClick={toggleClass}>
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
@@ -17,10 +34,12 @@ function NavBar() {
       <div className="navbar_links">
         <ul>
           <li>
-            <Link to="/login">Profile</Link>
+            <a href="#/" style={{ color: "green" }}>
+              {currentUser.email}
+            </a>
           </li>
-          <li>
-            <Link to="/">Profile</Link>
+          <li onClick={handleLogout}>
+            <a href="#/">Sing out</a>
           </li>
         </ul>
       </div>

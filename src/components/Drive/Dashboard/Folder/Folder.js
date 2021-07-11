@@ -4,20 +4,22 @@ import "./Folder.css";
 
 function Folder({ folder }) {
   return (
-    <div className="folder" style={{ padding: "10px" }}>
-      <Link
-        style={{ textDecoration: "none", color: "black" }}
-        to={`/folder/${folder.id}`}
-      >
-        <div className="folder__back">
-          <div className="paper"></div>
-          <div className="paper"></div>
-          <div className="paper"></div>
-          <div className="folder__front"></div>
-          <div className="folder__front right"></div>
-        </div>
-      </Link>
-      <span>{folder.name}</span>
+    <div className="folder_container">
+      <div className="folder" style={{ padding: "10px" }}>
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to={`/folder/${folder.id}`}
+        >
+          <div className="folder__back">
+            <div className="paper"></div>
+            <div className="paper"></div>
+            <div className="paper"></div>
+            <div className="folder__front"></div>
+            <div className="folder__front right"></div>
+          </div>
+        </Link>
+        <span>{folder.name}</span>
+      </div>
     </div>
   );
 }
