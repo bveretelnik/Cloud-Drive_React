@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "./Signup.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import { Alert } from "react-bootstrap";
+import AlertError from "../AlertError/AlertError";
 
 export default function Signup() {
   const emailRef = useRef();
@@ -36,7 +36,7 @@ export default function Signup() {
     <>
       <div className="signup_center">
         <h1>Sign Up</h1>
-        {error && <Alert variant="danger">{error}</Alert>}
+        {error && <AlertError error={error} />}
         <form onSubmit={handleSubmit}>
           <div className="txt_field">
             <input type="email" required ref={emailRef} />

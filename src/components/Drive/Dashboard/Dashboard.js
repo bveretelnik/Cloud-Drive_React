@@ -7,6 +7,7 @@ import { useFolder } from "../../../hooks/useFolder";
 import Folder from "./Folder/Folder";
 import { useParams } from "react-router-dom";
 import FolderBreadcrumbs from "./FolderBreadcrumbs/FolderBreadcrumbs";
+import File from "../File/File";
 
 function Dashboard() {
   const { folderId } = useParams();
@@ -31,6 +32,8 @@ function Dashboard() {
           ))}
         </div>
       )}
+      <hr />
+      <File />
     </>
   );
 }

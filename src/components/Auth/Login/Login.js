@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import { Alert } from "react-bootstrap";
 import "./Login.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import AlertError from "../AlertError/AlertError";
 
 export default function Login() {
   const emailRef = useRef();
@@ -31,7 +31,7 @@ export default function Login() {
     <>
       <div className="login_center">
         <h1>Login</h1>
-        {error && <Alert variant="danger">{error}</Alert>}
+        {error && <AlertError error={error}></AlertError>}
         <form onSubmit={handleSubmit}>
           <div className="txt_field">
             <input type="email" required ref={emailRef} />
