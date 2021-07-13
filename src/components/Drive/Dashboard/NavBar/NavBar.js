@@ -2,6 +2,7 @@ import React from "react";
 import "./NavBar.css";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../../contexts/AuthContext";
+import cloud_logo from "../../../../assets/img/cloud_logo.png";
 
 function NavBar() {
   const { currentUser, logout } = useAuth();
@@ -21,6 +22,7 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="brand_title">
+        <img src={cloud_logo} alt="Logo" />
         <Link style={{ textDecoration: "none", color: "black" }} to="/">
           Cloud Drive
         </Link>

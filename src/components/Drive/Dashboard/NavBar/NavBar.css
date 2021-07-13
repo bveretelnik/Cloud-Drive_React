@@ -11,6 +11,12 @@
   font-size: 1.7rem;
   margin: 0.5rem;
 }
+.brand_title img {
+  height: 40px;
+  position: relative;
+  top: 8px;
+  margin-right: 10px;
+}
 .navbar_links {
   height: 100%;
 }
