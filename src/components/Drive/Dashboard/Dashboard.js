@@ -11,7 +11,7 @@ import File from "../File/File";
 
 function Dashboard() {
   const { folderId } = useParams();
-  const { folder, childFolders } = useFolder(folderId);
+  const { folder, childFolders, childFiles } = useFolder(folderId);
 
   return (
     <>
@@ -19,21 +19,30 @@ function Dashboard() {
       <div className="db_container">
         <FolderBreadcrumbs currentFolder={folder} />
         <AddFolderButton currentFolder={folder} />
-        <AddFileButton />
+        <AddFileButton currentFolder={folder} />
       </div>
       {childFolders.length > 0 && (
         <div
           style={{ display: "flex", alignItems: "center", padding: "2px 14px" }}
         >
           {childFolders.map((childFolder) => (
-            <div key={childFolder.id} style={{ maxWidth: "250px" }}>
+            <div
+              key={childFolder.id}
+              style={{ display: "flex", maxWidth: "250px" }}
+            >
               <Folder folder={childFolder} />
             </div>
           ))}
         </div>
       )}
-      <hr />
-      <File />
+      {childFolders.length > 0 && childFiles.length > 0 && <hr />}
+      {childFiles.length > 0 && (
+        <div className="file_component">
+          {childFiles.map((childFile) => (
+            <File key={childFile.id} file={childFile} />
+          ))}
+        </div>
+      )}
     </>
   );
 }

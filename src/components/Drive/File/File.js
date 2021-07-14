@@ -2,14 +2,21 @@ import React from "react";
 import "./File.css";
 import { AiFillFile } from "react-icons/ai";
 
-function File() {
+function File({ file }) {
   return (
-    <a href="#" target="_blank" className="file_btn">
-      <span>
-        <AiFillFile />
-      </span>
-      File Name
-    </a>
+    <>
+      <a
+        href={file.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="file_btn"
+      >
+        <span>
+          <AiFillFile />
+        </span>
+        {file.name}
+      </a>
+    </>
   );
 }
 
