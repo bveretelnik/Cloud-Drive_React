@@ -4,7 +4,7 @@
   border: 2px solid black;
   background-color: white;
   color: black;
-  padding: 9px 18px;
+  padding: 13px 18px;
   margin: 10px;
   text-decoration: none;
   border-radius: 5px;
@@ -20,4 +20,14 @@
   position: relative;
   right: 9px;
   top: 2px;
+}
+
+@media (max-width: 540px) {
+  .file_btn {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .file_btn span {
+    font-size: 20px;
+  }
 }

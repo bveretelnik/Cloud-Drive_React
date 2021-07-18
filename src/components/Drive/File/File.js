@@ -3,6 +3,8 @@ import "./File.css";
 import { AiFillFile } from "react-icons/ai";
 
 function File({ file }) {
+  const fileName = file.name.split(".");
+
   return (
     <div
       style={{
@@ -18,7 +20,9 @@ function File({ file }) {
         <span>
           <AiFillFile />
         </span>
-        {file.name}
+        {fileName[0].length > 15
+          ? `${fileName[0].substring(0, 10)}.../.${fileName[1]}`
+          : file.name}
       </a>
     </div>
   );
