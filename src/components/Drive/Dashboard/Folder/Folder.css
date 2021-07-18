@@ -1,10 +1,6 @@
-.folder_container {
-  display: flex;
-  align-items: flex-start;
-}
-
 .folder {
   transition: all 0.2s ease-in;
+  width: 100px;
   text-align: center;
 }
 .folder__back {

@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Auth/Login/Login";
 import PrivateRoute from "./components/PrivateRoute";
 
-import Profile from "./components/Auth/Profile/Profile";
 import Dashboard from "./components/Drive/Dashboard/Dashboard";
 
 function App() {
@@ -16,9 +15,6 @@ function App() {
           {/* Drive */}
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/folder/:folderId" component={Dashboard} />
-
-          {/* Profile */}
-          <PrivateRoute path="/user" component={Profile} />
 
           {/* Auth */}
           <Route path="/signup" component={Signup} />

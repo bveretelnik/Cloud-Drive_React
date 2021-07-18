@@ -31,13 +31,17 @@
 .navbar_links li a {
   display: block;
   text-decoration: none;
-  color: #a6a6a6;
+  color: black;
   padding: 0.5rem;
   cursor: pointer;
 }
-.navbar_links li:hover {
-  background-color: #e6e6e6;
+.navbar_links li a:hover {
+  content: "Sing out";
+  color: white;
+  background-color: black;
+  border-radius: 5px;
 }
+
 .toggle_button {
   position: absolute;
   top: 0.75rem;

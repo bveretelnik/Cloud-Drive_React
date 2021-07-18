@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import "./AddFileButton.css";
+import ReactDOM from "react-dom";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useAuth } from "../../../../contexts/AuthContext";
 import { storage, database } from "../../../../firebase";
 import { v4 as uuidV4 } from "uuid";
 import { ROOT_FOLDER } from "../../../../hooks/useFolder";
+
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import ChangingProgressProvider from "./ChangingProgressProvider";
 
 function AddFileButton({ currentFolder }) {
   const [uploadingFiles, setUploadingFiles] = useState([]);
@@ -15,6 +20,7 @@ function AddFileButton({ currentFolder }) {
 
     if (currentFolder == null || file == null) return;
     const id = uuidV4();
+
     setUploadingFiles((prevUploadingFiles) => [
       ...prevUploadingFiles,
       { id: id, name: file.name, progress: 0, error: false },
@@ -23,7 +29,6 @@ function AddFileButton({ currentFolder }) {
       currentFolder === ROOT_FOLDER
         ? `${currentFolder.path.join("/")}/${file.name}`
         : `${currentFolder.path.join("/")}/${currentFolder.name}/${file.name}`;
-    console.log(filePath);
 
     const uploadTask = storage
       .ref(`/files/${currentUser.uid}/${filePath}`)
@@ -84,9 +89,10 @@ function AddFileButton({ currentFolder }) {
       }
     );
   }
+
   return (
     <>
-      <div style={{ padding: "5px" }}>
+      <div style={{ padding: "5px 5px" }}>
         <input
           type="file"
           name="file"
@@ -99,6 +105,35 @@ function AddFileButton({ currentFolder }) {
             <AiOutlineCloudUpload />
           </span>
         </label>
+        {uploadingFiles.length > 0 &&
+          ReactDOM.createPortal(
+            <div
+              style={{
+                position: "absolute",
+                bottom: "1rem",
+                right: "1rem",
+                maxWidth: "100px",
+              }}
+            >
+              {uploadingFiles.map((file) => (
+                <ChangingProgressProvider key={file.id} values={[0, 100]}>
+                  {(progress) => (
+                    <CircularProgressbar
+                      value={progress}
+                      text={`${progress}%`}
+                      styles={buildStyles({
+                        pathTransition:
+                          progress === 0
+                            ? "none"
+                            : "stroke-dashoffset 0.5s ease 0s",
+                      })}
+                    />
+                  )}
+                </ChangingProgressProvider>
+              ))}
+            </div>,
+            document.body
+          )}
       </div>
     </>
   );

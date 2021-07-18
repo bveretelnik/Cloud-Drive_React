@@ -4,7 +4,11 @@ import { AiFillFile } from "react-icons/ai";
 
 function File({ file }) {
   return (
-    <>
+    <div
+      style={{
+        padding: "15px",
+      }}
+    >
       <a
         href={file.url}
         target="_blank"
@@ -16,7 +20,7 @@ function File({ file }) {
         </span>
         {file.name}
       </a>
-    </>
+    </div>
   );
 }
 

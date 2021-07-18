@@ -4,8 +4,8 @@ import "./Folder.css";
 
 function Folder({ folder }) {
   return (
-    <div className="folder_container">
-      <div className="folder" style={{ padding: "10px" }}>
+    <>
+      <div className="folder">
         <Link
           style={{ textDecoration: "none", color: "black" }}
           to={`/folder/${folder.id}`}
@@ -17,10 +17,10 @@ function Folder({ folder }) {
             <div className="folder__front"></div>
             <div className="folder__front right"></div>
           </div>
+          <span>{folder.name}</span>
         </Link>
-        <span>{folder.name}</span>
       </div>
-    </div>
+    </>
   );
 }
 

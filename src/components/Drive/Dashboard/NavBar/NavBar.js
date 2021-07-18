@@ -35,13 +35,8 @@ function NavBar() {
       </a>
       <div className="navbar_links">
         <ul>
-          <li>
-            <a href="#/" style={{ color: "green" }}>
-              {currentUser.email}
-            </a>
-          </li>
           <li onClick={handleLogout}>
-            <a href="#/">Sing out</a>
+            <a href="#/">{currentUser.email}</a>
           </li>
         </ul>
       </div>

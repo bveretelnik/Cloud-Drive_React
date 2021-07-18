@@ -21,15 +21,11 @@ function Dashboard() {
         <AddFolderButton currentFolder={folder} />
         <AddFileButton currentFolder={folder} />
       </div>
+
       {childFolders.length > 0 && (
-        <div
-          style={{ display: "flex", alignItems: "center", padding: "2px 14px" }}
-        >
+        <div className="folder_container">
           {childFolders.map((childFolder) => (
-            <div
-              key={childFolder.id}
-              style={{ display: "flex", maxWidth: "250px" }}
-            >
+            <div key={childFolder.id}>
               <Folder folder={childFolder} />
             </div>
           ))}
