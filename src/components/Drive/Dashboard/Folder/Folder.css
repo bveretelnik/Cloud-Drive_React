@@ -62,3 +62,6 @@
 .folder:hover .right {
   transform: skew(-15deg) scaleY(0.6);
 }
+span {
+  word-wrap: break-word;
+}

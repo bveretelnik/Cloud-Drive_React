@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f2f2f2;
-  color: black;
+  color: rgb(170, 154, 154);
 }
 
 .brand_title {
@@ -36,7 +36,6 @@
   cursor: pointer;
 }
 .navbar_links li a:hover {
-  content: "Sing out";
   color: white;
   background-color: black;
   border-radius: 5px;
