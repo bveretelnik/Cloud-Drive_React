@@ -21,3 +21,8 @@ ul.breadcrumb li a:hover {
   color: #01447e;
   text-decoration: underline;
 }
+@media (max-width: 540px) {
+  ul.breadcrumb {
+    display: block;
+  }
+}

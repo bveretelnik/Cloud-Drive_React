@@ -19,12 +19,18 @@ function FolderBreadcrumbs({ currentFolder }) {
                 }}
                 style={{ maxWidth: "150px" }}
               >
-                {folder.name}
+                {folder.name.length > 8
+                  ? `${folder.name.substring(0, 8)}...`
+                  : folder.name}
               </Link>
             </li>
           ))}
         {currentFolder && (
-          <li style={{ maxWidth: "200px" }}>{currentFolder.name}</li>
+          <li style={{ maxWidth: "200px" }}>
+            {currentFolder.name.length > 8
+              ? `${currentFolder.name.substring(0, 8)}...`
+              : currentFolder.name}
+          </li>
         )}
       </ul>
     </>

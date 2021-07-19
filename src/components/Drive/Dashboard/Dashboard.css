@@ -18,15 +18,9 @@
   margin: 20px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 1000px) {
   .folder_container {
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 600px) {
-  .folder_container {
-    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
