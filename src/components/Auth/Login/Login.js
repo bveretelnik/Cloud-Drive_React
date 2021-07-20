@@ -1,16 +1,22 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Login.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import AlertError from "../AlertError/AlertError";
+import { AiOutlineGoogle, AiFillApple } from "react-icons/ai";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  async function handleLoginGoogle() {
+    await loginWithGoogle();
+    history.push("/");
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -48,6 +54,18 @@ export default function Login() {
             Dont have account? <Link to="/signup">Sign Up</Link>
           </div>
         </form>
+        <div className="login_auth">
+          <div className="login__container">
+            <h2>Sign in with Google </h2>
+
+            <button className="login_google_btn" onClick={handleLoginGoogle}>
+              Sing in{" "}
+              <span>
+                <AiOutlineGoogle />
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
