@@ -22,7 +22,6 @@ export function AuthProvider({ children }) {
     return auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result.user);
         setCurrentUser(result.user);
         setLoading(false);
       })

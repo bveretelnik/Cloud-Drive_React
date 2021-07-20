@@ -1,13 +1,13 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import AlertError from "../AlertError/AlertError";
-import { AiOutlineGoogle, AiFillApple } from "react-icons/ai";
+import { AiOutlineGoogle } from "react-icons/ai";
 
 export default function Login() {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login, loginWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ export default function Login() {
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(email, password);
       history.push("/");
     } catch {
       setError("Failed to log in");
@@ -40,12 +40,20 @@ export default function Login() {
         {error && <AlertError error={error}></AlertError>}
         <form onSubmit={handleSubmit}>
           <div className="txt_field">
-            <input type="email" required ref={emailRef} />
+            <input
+              type="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <span></span>
             <label>Email</label>
           </div>
           <div className="txt_field">
-            <input type="password" required ref={passwordRef} />
+            <input
+              type="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <span></span>
             <label>Password</label>
           </div>
